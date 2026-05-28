@@ -1,0 +1,22 @@
+nodes:
+  - id: hero
+    type: hero
+    label: Example More
+    image: /portfolio/example-poster.webp
+    x: 0
+    y: 0
+  - id: detail-1
+    type: detail
+    label: Detail shot
+    image: /portfolio/Still Image Medium.png
+    x: 420
+    y: -160
+  - id: detail-2
+    type: detail
+    label: Mixed media, various dimensions.
+    x: 420
+    y: 160
+
+edges:
+  - [hero, detail-1]
+  - [hero, detail-2]

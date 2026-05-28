@@ -1,0 +1,22 @@
+nodes:
+  - id: hero
+    type: hero
+    label: Example Website
+    image: /portfolio/example-poster.webp
+    x: 0
+    y: 0
+  - id: detail-1
+    type: detail
+    label: Homepage design
+    image: /portfolio/example-poster.webp
+    x: 420
+    y: -160
+  - id: detail-2
+    type: detail
+    label: Built with React and CSS modules.
+    x: 420
+    y: 160
+
+edges:
+  - [hero, detail-1]
+  - [hero, detail-2]

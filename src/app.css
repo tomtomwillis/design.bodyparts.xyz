@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'PackTRIALHard';
+  src: url('/fonts/Pack-TRIALHard.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  --color-bg: #EAF5FF;
+  --color-primary: #FFBAEB;
+  --color-text-nav: #FFBAEB;
+  --color-text-sub: #f9a8d4;
+  --color-accent: #3b82f6;
+
+  --font-primary: 'PackTRIALHard', sans-serif;
+  --font-secondary: 'IoskeleyMono', monospace;
+
+  --nav-font-size: 2rem;
+  --nav-sub-font-size: 0.85rem;
+
+  --title-top: 55px;
+  --title-line-height: 105pt;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-primary);
+  color: var(--color-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}

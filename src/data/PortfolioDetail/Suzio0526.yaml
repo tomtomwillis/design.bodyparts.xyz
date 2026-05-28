@@ -1,0 +1,23 @@
+nodes:
+  - id: hero
+    type: hero
+    label: 
+    image: /portfolio/SuzioMay26/StillImageMedium.png
+    x: 0
+    y: 0
+    width: 200
+  - id: detail-1
+    type: detail
+    label: Process sketch
+    image: /portfolio/example-poster.webp
+    x: 420
+    y: -160
+  - id: detail-2
+    type: detail
+    label: Risograph, 2-colour print on 120gsm uncoated stock.
+    x: 420
+    y: 160
+
+edges:
+  - [hero, detail-1]
+  - [hero, detail-2]

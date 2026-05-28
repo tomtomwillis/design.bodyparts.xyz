@@ -1,0 +1,109 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.navItem {
+  font-family: var(--font-primary);
+  font-size: var(--nav-font-size);
+  color: var(--color-text-nav);
+  line-height: 1.1;
+  display: block;
+  text-align: left;
+}
+
+.navItem:hover {
+  opacity: 0.75;
+}
+
+.portfolioGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+}
+
+.navItemBodyParts {
+  margin-top: 0.4rem;
+}
+
+.subMenu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-left: 0.25rem;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.subMenuOpen {
+  max-height: 4rem;
+  opacity: 1;
+  margin-top: 0.25rem;
+}
+
+.subItem {
+  font-family: var(--font-secondary);
+  font-size: var(--nav-sub-font-size);
+  color: var(--color-text-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.subItem:hover {
+  opacity: 0.75;
+}
+
+.aboutGroup {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s ease;
+}
+
+.aboutMenu {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.25s ease-in, opacity 0.2s ease-in;
+}
+
+.aboutMenuOpen {
+  max-height: 9rem;
+  opacity: 1;
+  margin-top: 0.35rem;
+  transition: max-height 0.35s ease-out, opacity 0.3s ease-out;
+}
+
+.aboutBio {
+  font-family: var(--font-secondary);
+  font-size: var(--nav-sub-font-size);
+  color: var(--color-text-sub);
+  line-height: 1.2;
+  padding-left: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.aboutLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-left: 0.25rem;
+}
+
+.navItemBodyParts {
+  transition: opacity 0.3s ease;
+}
+
+.navGroupHidden {
+  opacity: 0;
+  pointer-events: none;
+}
