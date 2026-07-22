@@ -7,7 +7,7 @@ import GalleryModal from '../../components/GalleryModal/GalleryModal'
 import styles from './Portfolio.module.css'
 
 const MAIN_CATEGORIES = ['all', 'poster', 'web', '3d', '2d']
-const MORE_CATEGORIES = ['club', 'logo', 'branding']
+const MORE_CATEGORIES = ['club', 'video', 'branding']
 const VALID_CATEGORIES = [...MAIN_CATEGORIES, ...MORE_CATEGORIES]
 const IDLE_INTERVAL_MS = 3000
 

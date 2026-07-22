@@ -138,8 +138,28 @@ mirroring their subfolder. Review, then delete that folder.
 
 ## Deploy
 
-```bash
-npm run deploy
-```
+**Push to `main`.** [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the
+site and publishes it to GitHub Pages; there's nothing to run locally. You can also trigger it
+by hand from the repo's **Actions** tab (*Deploy to GitHub Pages* → *Run workflow*).
 
-Builds and publishes `dist/` to the `gh-pages` branch via the `gh-pages` package.
+Two settings make this work, and both are one-time:
+
+- **Settings → Pages → Source** must be **GitHub Actions** (not "Deploy from a branch").
+- **Settings → Pages → Custom domain** is `design.bodyparts.xyz`, with **Enforce HTTPS** ticked.
+
+DNS lives at whoever registers `bodyparts.xyz` — a single `CNAME` record for the `design`
+subdomain pointing at `tomtomwillis.github.io.` (DNS-only; if it's on Cloudflare, keep the
+proxy **off**, or GitHub can't provision the HTTPS cert).
+
+### Clean URLs
+
+The app uses `BrowserRouter`, so routes have no `#` (`/portfolio/poster`, not `/#/portfolio/poster`).
+GitHub Pages has no server to route those deep links, so the `spaFallback` plugin in
+[vite.config.js](vite.config.js) copies `index.html` to `404.html` at build time — a direct hit
+or refresh on any route falls through to `404.html`, which boots the app and lets React Router
+resolve the URL. (GitHub returns a 404 status on those requests even though the page renders
+correctly; harmless for this site.)
+
+[`public/CNAME`](public/CNAME) is copied into every build so the custom domain survives
+each deploy. **Don't delete it** — without it GitHub can drop the domain back to
+`tomtomwillis.github.io/design.bodyparts.xyz/`, which the `base: '/'` build won't work under.
