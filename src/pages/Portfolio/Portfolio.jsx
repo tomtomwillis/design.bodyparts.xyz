@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom'
-import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo } from 'react'
 import { ZoomIn, ChevronsLeftRight, ChevronDown } from 'lucide-react'
 import { portfolioItems } from '../../data/portfolio'
 import PortfolioItem from './PortfolioItem'
@@ -20,9 +20,16 @@ export default function Portfolio() {
   const navigate = useNavigate()
   const segment = pathname.split('/').pop()
   const active = VALID_CATEGORIES.includes(segment) ? segment : 'all'
-  const items = active === 'all'
-    ? portfolioItems
-    : portfolioItems.filter((item) => item.tags?.includes(active))
+  // Memoised so `items` keeps a stable reference across renders within the same
+  // category. It's a dependency of the scroll-metrics effect below; rebuilding
+  // the array on every render would re-run that effect (which calls setThumb),
+  // which re-renders, which rebuilds the array — an infinite update loop.
+  const items = useMemo(
+    () => active === 'all'
+      ? portfolioItems
+      : portfolioItems.filter((item) => item.tags?.includes(active)),
+    [active]
+  )
 
   const [moreOpen, setMoreOpen] = useState(() => MORE_CATEGORIES.includes(active))
   const [expandedId, setExpandedId] = useState(null)
@@ -131,15 +138,26 @@ export default function Portfolio() {
       })
     }
 
+    // Bail out when the metrics are unchanged so an identical setThumb can't
+    // schedule a needless re-render (this effect depends on thumb.heightPct, so
+    // a no-op object update would otherwise re-trigger the effect).
+    function applyThumb(next) {
+      setThumb(prev =>
+        prev.visible === next.visible && prev.heightPct === next.heightPct && prev.topPct === next.topPct
+          ? prev
+          : next
+      )
+    }
+
     function updateMetrics() {
       updateHint()
       const { scrollHeight, clientHeight } = node
       if (scrollHeight <= clientHeight) {
-        setThumb({ visible: true, heightPct: 100, topPct: 0 })
+        applyThumb({ visible: true, heightPct: 100, topPct: 0 })
         return
       }
       const heightPct = Math.max((clientHeight / scrollHeight) * 100, 8)
-      setThumb({ visible: true, heightPct, topPct: computeTopPct(heightPct) })
+      applyThumb({ visible: true, heightPct, topPct: computeTopPct(heightPct) })
     }
 
     updateMetrics()

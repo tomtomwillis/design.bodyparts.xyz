@@ -578,6 +578,12 @@
     transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  /* Mobile animates rows, not columns, so the open state must expand the row
+     track (the desktop .moreTagsOpen only sets grid-template-columns). */
+  .moreTagsOpen {
+    grid-template-rows: 1fr;
+  }
+
   .moreTagsInner {
     min-height: 0;
     white-space: normal;
