@@ -1,21 +1,140 @@
 # Body Bits Website
 
-Portfolio site for Body Parts / Body Bits. Built with React + Vite, deployed to GitHub Pages.
+Portfolio site for Body Parts / Body Bits — [design.bodyparts.xyz](https://design.bodyparts.xyz).
+React + Vite, content authored in YAML, deployed to GitHub Pages.
 
 ## Stack
 
-- React 19, React Router
-- Three.js / React Three Fiber — 3D model viewer
-- XY Flow — mindmap diagrams per portfolio item
-- CSS Modules + custom properties for all styling
-- YAML for portfolio content
+- **React 19** + **React Router 7** — routes defined in [App.jsx](src/App.jsx)
+- **Three.js / React Three Fiber** — spinning 3D model on the home page
+- **XY Flow** — pannable "Behind The Scenes" mindmap per portfolio item
+- **CSS Modules** + custom properties — no CSS framework, all tokens in [app.css](src/app.css)
+- **YAML** for all portfolio content, loaded at build time by `@rollup/plugin-yaml`
 
-## Dev
+## Getting started
 
 ```bash
 npm install
 npm run dev
 ```
+
+| Script | Does |
+|---|---|
+| `npm run dev` | Vite dev server |
+| `npm run build` | Production build into `dist/` |
+| `npm run preview` | Serve the built output locally |
+| `npm run lint` | ESLint over the repo |
+| `npm run webp` | Convert/downsize portfolio images (see below) |
+
+> There is no `deploy` script — pushing to `main` deploys. See [Deploy](#deploy).
+
+> The site is served from the root of the custom domain (`base: '/'` in [vite.config.js](vite.config.js)).
+> Anything under `public/` is referenced through `import.meta.env.BASE_URL` — `portfolio.js`
+> and the mindmap nodes already do this, so YAML paths are written plain, e.g. `/portfolio/Foo/bar.webp`.
+> That indirection is what makes the base path a one-line change if the domain ever goes away.
+
+## Layout
+
+```
+src/
+  App.jsx                  route table
+  app.css                  @font-face, design tokens, global reset
+  pages/
+    Home/                  title + nav left, 3D model right
+    About/  BodyParts/
+    Portfolio/             filterable list + drag-resizable image preview
+      PortfolioItem.jsx    one row; expands to description + Gallery / BTS buttons
+      MindMap/             /portfolio/:slug — XY Flow canvas with momentum panning
+  components/
+    Navigation/            collapsible nav with Portfolio sub-menu
+    ModelViewer/           R3F canvas, loads public/model/mace.glb
+    GalleryModal/          full-screen image/video lightbox
+  data/
+    AllPortfolio.yaml      every item's title, tags, date, hero, gallery, description
+    PortfolioDetail/*.yaml optional mindmap for an item (nodes + edges)
+    portfolio.js           merges the two into the `portfolioItems` array
+public/
+  portfolio/  model/  fonts/  Title.svg  favicon.svg  icons.svg
+scripts/
+  convert-to-webp.sh
+```
+
+### How the data layer works
+
+[portfolio.js](src/data/portfolio.js) reads `AllPortfolio.yaml`, sorts newest-first by
+`date`, and for each entry looks for `PortfolioDetail/<page>.yaml` via `import.meta.glob`.
+New detail files are picked up automatically — never edit `portfolio.js` to add an item.
+
+## Adding a portfolio item
+
+1. Drop the images into `public/portfolio/<ItemFolder>/` and run `npm run webp`.
+2. Add an entry to [AllPortfolio.yaml](src/data/AllPortfolio.yaml):
+
+   ```yaml
+   - title: Suzio - The Final Dance @ Colour Factory London
+     tags: [poster, 3d, video, club]     # drives the category filter
+     date: '18.05.26'                    # DD.MM.YY — sorts the list
+     page: Suzio0526                     # optional; slug of the detail file
+     hero: /portfolio/SuzioMay26/Still.webp
+     gallery:
+       - /portfolio/SuzioMay26/Still.webp
+       - /portfolio/SuzioMay26/A3.webp
+     description: 'Poster and video for Suzio, a club night in London.'
+   ```
+
+   `hero` is what the preview panel shows on hover. `gallery` enables the **Gallery**
+   button (images *and* `.mp4/.webm/.ogg/.mov` are supported). Omit `page` and the item
+   simply has no **Behind The Scenes** page.
+
+3. *(Optional)* Add the mindmap at `src/data/PortfolioDetail/<page>.yaml`:
+
+   ```yaml
+   nodes:
+     - id: hero
+       type: hero              # 'hero' or 'detail'
+       label: ''
+       image: /portfolio/SuzioMay26/Still.webp
+       x: 0
+       y: 0
+       width: 200              # optional, px
+     - id: detail-1
+       type: detail
+       label: Process sketch
+       x: 420
+       y: -160
+
+   edges:
+     - [hero, detail-1]        # [source-id, target-id]
+   ```
+
+   Positions are manual — there's no auto-layout.
+
+### Categories
+
+Filter tabs live in `MAIN_CATEGORIES` / `MORE_CATEGORIES` in
+[Portfolio.jsx](src/pages/Portfolio/Portfolio.jsx#L10-L11). Adding a new one means adding
+it there *and* adding a `/portfolio/<cat>` route in [App.jsx](src/App.jsx) — otherwise the
+slug falls through to the mindmap route.
+
+## Images
+
+```bash
+npm run webp     # requires: brew install webp   (macOS only — uses sips)
+```
+
+Converts every `.png/.jpg/.jpeg/.tiff` under `public/portfolio/` to WebP at quality 85, and
+downsizes anything whose long edge exceeds 2200px (2× the 1100px gallery modal, for retina).
+Originals — and any WebP shrunk in place — are copied to `public/portfolio/tobedeleted/`,
+mirroring their subfolder. Review, then delete that folder.
+
+## Conventions
+
+- **One component per folder**: `ComponentName/ComponentName.jsx` + `ComponentName.module.css`.
+  Pages in `src/pages/`, reusable UI in `src/components/`. Split anything over ~100 lines.
+- **No hardcoded colours or font stacks.** Every colour and font is a custom property in
+  [app.css](src/app.css); components reference `var(--...)`.
+- **Model path** is set in one place — the `modelPath` default in
+  [ModelViewer.jsx](src/components/ModelViewer/ModelViewer.jsx#L18).
 
 ## Deploy
 
@@ -23,13 +142,4 @@ npm run dev
 npm run deploy
 ```
 
-Builds and pushes to `gh-pages` branch via the `gh-pages` package.
-
-## Adding a portfolio item
-
-1. Drop the image into `public/portfolio/`
-2. Create `src/data/items/my-item.yaml` — title, tags, date, nodes, edges
-3. Create `src/data/layouts/my-item.js` — `{ x, y }` position for each node
-4. Import both in `src/data/portfolio.js` and add a `buildItem()` call to the array
-
-See existing files in `src/data/items/` and `src/data/layouts/` for examples.
+Builds and publishes `dist/` to the `gh-pages` branch via the `gh-pages` package.

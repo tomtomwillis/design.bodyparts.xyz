@@ -1,14 +1,236 @@
-- title: Suzio - The Final Dance
+- title: Suzio - The Final Dance @ Colour Factory London
   tags: [poster, 3d, video, club]
   date: '18.05.26'
   page: Suzio0526
+  hero: /portfolio/SuzioMay26/StillImageMedium.webp
+  gallery:
+    - /portfolio/SuzioMay26/StillImageMedium.webp
+    - /portfolio/SuzioMay26/A3 - unedited Medium.webp
+  description: 'Poster and video for Suzio, a club night in London founded by Manuka Honey. The video and poster were made in Blender.'
 
-- title: Trough 05
+- title: Trough 05 @ Avalon Cafe London
   tags: [poster, 3d, club]
   date: '11.03.26'
   page: example-website
+  hero: /portfolio/Trough05/Artboard2.webp
+  description: ''
 
 - title: SMFM @ Carpet Shop
   tags: [poster, 2d, club]
   date: '11.03.26'
-  page: example-more
+  hero: /portfolio/SMFMMarch26/A4 black.webp
+  description: '2D graphic poster for SMFM club night at the Carpet Shop. Made in Affinity'
+  gallery:
+    - /portfolio/SMFMMarch26/A4 black.webp
+    - /portfolio/SMFMMarch26/A4 white.webp
+    - /portfolio/SMFMMarch26/A4 red.webp
+
+- title: Death of Dysphoria Ball @ Avalon Cafe
+  tags: [poster, 3d, video, club]
+  date: '12.10.25'
+  hero: /portfolio/HesseAvalonOct25/V5.webp
+  gallery:
+    - /portfolio/HesseAvalonOct25/V5.webp
+  description: 'Design for a fundraiser event at Avalon Cafe inspired by the visuals of the Series of Unfortunate events film.'
+
+- title: Suzio X Squish San Francisco
+  tags: [poster, 3d, club]
+  date: '26.09.25'
+  hero: /portfolio/SquishSept25/V_3.webp
+  description: 'A sexy poster for a Folsom Street Party in San Francisco. Made in Blender and Affinity Designer.'
+
+- title: Suzio Vol.8
+  tags: [poster, 3d, video, club]
+  date: '07.06.25'
+  hero: /portfolio/SuzioMarch25/V5 Poster.webp
+  description: 'Wrestling themed poster and video for the Suzio crew. Made in Blender and Affinity Designer.'
+
+- title: Nick Léon x Stalagtiites
+  tags: [poster, 3d, club]
+  date: '09.02.22'
+  hero: /portfolio/stalagtiitesFeb22/Nick Leon - with RA logo_Final V 1 copy.webp
+  description: 'Hot stuff for a hot night with Nick Léon and Stalagtiites. Made in Blender.'
+
+- title: Trough 03 @ Avalon Cafe London
+  tags: [poster, 2d, web, club, video]
+  date: '13.09.25'
+  hero: /portfolio/TroughSept25/Screenshot.webp
+  description: '2D web app poster to promote Trough 03 clubnight. The site would infinitely generate poster variations from a sample of 10000+ dog drawings downloaded from the google sketch dataset.'
+
+- title: BRAVA - Unta La Salsa
+  tags: [poster, 3d, club]
+  date: '12.05.23'
+  hero: /portfolio/UntaLaSalsaMay23/PNG_A3_Final.webp
+  description: '3D tongues made in Blenders geometry nodes for a party run by Spanish artist BRAVA'
+
+- title: Club Sylkie @ Summerhall Edinburgh
+  tags: [poster, 3d, club]
+  date: '19.08.23'
+  hero: /portfolio/SylkieAug23/A3 Poster-01.webp
+  description: '3D baddie for another poster for Club Sylkie. The start of my collaborations with Mauka Honey'
+
+- title: Club Sylkie @ Stereo Glasgow
+  tags: [poster, 3d, club]
+  date: '06.10.23'
+  hero: /portfolio/Sylkie Oct23/A3 Poster_Border_Bright Red.webp
+  description: 'Dark Fantasy ovarian sword for a heavy Club Sylkie line up'
+
+- title: Reproduction T-Shirt design
+  tags: [3d, branding]
+  date: '05.07.23'
+  hero: /portfolio/ReproductionJuly23/T-shirt Back image.webp
+  description: 'T-shirt design for Bristol-based light and sound company Reproduction. Made ready for the summer festival season'
+  gallery:
+    - /portfolio/ReproductionJuly23/Mock Up _ Final.webp
+    - /portfolio/ReproductionJuly23/T-shirt Back image.webp
+
+- title: Suzio Vol.6 @ Colour Factory London
+  tags: [3d, poster, video, club]
+  date: '25.11.23'
+  hero: /portfolio/SuzioNov23/PNG_Compressed.webp
+  description: 'My first design for the Suzio party - I went all in on the video and poster design in Blender.'
+
+- title: Club Sylkie @ Sneaky Pete's Edinburgh
+  tags: [3d, poster, video, club]
+  date: '27.10.23'
+  hero: /portfolio/SylkieOct23-2/Final Render V1 Large.webp
+  description: 'Nature themed video and poster for Club syklie at Sneaky Pete in Edinburgh. Made in Blender and Affinity Designer.'
+
+- title: Unta La Chispa @ Venue MOT London
+  tags: [2d, poster, club]
+  date: '01.03.24'
+  hero: /portfolio/UntaLaChispaMarch24/Final Poster_QR.webp
+  description: 'Quick 2D work for some spanish legends for their first london party'
+
+- title: SMFM @ Carpet Shop
+  tags: [2d, poster, club]
+  date: '29.03.24'
+  hero: /portfolio/SMFMMarch24/Checkerboard texture white.webp
+  description: '2D work for radio fundraiser for London Radio Station SMFM'
+
+- title: SMFM @ Carpet Shop
+  tags: [2d, poster, club]
+  date: '29.03.24'
+  hero: /portfolio/SMFMMarch24/Checkerboard texture white.webp
+  description: '2D work for radio fundraiser for London Radio Station SMFM'
+
+- title: Suzio Vol.7 @ Colour Factory London
+  tags: [3d, poster, video, club]
+  date: '26.04.24'
+  hero: /portfolio/SuzioApril24/Render_7.webp
+  description: 'Sexy desert cars for teh Suzio gang'
+
+- title: Feel the Wind on Your Face @ Conditions 2024
+  tags: [3d]
+  date: '31.12.23'
+  hero: /portfolio/ConditionsDec23/466555903_18468971698008929_8706237827599573219_n.webp
+  description: 'technical support for a work by Rosie Hook as part of the Conditions accessible arts programme. Supported by creating the 3D car model and the seams so the 2D panels could be printed'
+  gallery:
+    - /portfolio/ConditionsDec23/466555903_18468971698008929_8706237827599573219_n.webp
+    - /portfolio/ConditionsDec23/466893942_18468971710008929_9014111882942272347_n.webp
+    - /portfolio/ConditionsDec23/Screenshot 2024-07-15 at 10.01.15 pm.webp
+    - /portfolio/ConditionsDec23/Screenshot 2024-07-15 at 10.01.38 pm.webp
+    - /portfolio/ConditionsDec23/Screenshot 2024-07-15 at 10.07.19 pm.webp
+
+- title: Shakara @ Berkeley Suite Glasgow
+  tags: [3d, poster, club]
+  date: '14.06.24'
+  hero: /portfolio/ShakaraMarch24/RGB_PNG_small_A3.webp
+  description: 'Morning Sun for Shakara in Glasgow'
+  gallery:
+    - /portfolio/ShakaraMarch24/RGB_PNG_small_A3.webp
+    - /portfolio/ShakaraMarch24/RGB_PNG_small_Square.webp
+
+- title: Ponyboy Halloween 2024
+  tags: [3d, poster, club, video]
+  date: '01.11.24'
+  hero: /portfolio/PonyBoyNov24/FINAL RENDER A3 POSTER.webp
+  description: 'Spooky video and poster for hottest queer party in Glasgow.'
+  gallery:
+    - /portfolio/PonyBoyNov24/FINAL RENDER A3 POSTER.webp
+    - /portfolio/PonyBoyNov24/Square Fisheye Poster.webp
+
+- title: Filth Logo
+  tags: [3d, branding]
+  date: '13.08.24'
+  hero: /portfolio/FilthAug24/Silver_Lower Case_no glow.webp
+  description: 'Logo/Branding for Filth - the coolest florist in the UK.'
+  gallery:
+    - /portfolio/FilthAug24/Silver_Lower Case_no glow.webp
+    - /portfolio/FilthAug24/Silver_Capital Letters Transparent_no glow.webp
+    - /portfolio/FilthAug24/Pink_Lower Case_no glow.webp
+    - /portfolio/FilthAug24/Screenshot 2026-07-22 at 5.38.52 pm.webp
+    - /portfolio/FilthAug24/Screenshot 2026-07-22 at 5.39.54 pm.webp
+    - /portfolio/FilthAug24/Screenshot 2026-07-22 at 5.41.02 pm.webp
+
+- title: Club Sylkie X Chispa
+  tags: [2d, poster, club]
+  date: '30.08.24'
+  hero: /portfolio/SylkieAug24/Green+Purple_3_Instagram.webp
+  description: '2D work for a glasgow clubnight meet up'
+  gallery:
+    - /portfolio/SylkieAug24/Green+Purple_3_Instagram.webp
+    - /portfolio/SylkieAug24/Green+Purple_2_Instagram.webp
+
+- title: Shakara @ Berkeley Suite Glasgow
+  tags: [2d, 3d, poster, club]
+  date: '19.04.24'
+  hero: /portfolio/ShakaraApril24/45 aspect final Artboard 2@2x.webp
+  description: 'More 3d/2d work for Glasgow club night Shakara'
+
+- title: Healthy X Manuka Honey
+  tags: [3d, poster, video, club]
+  date: '09.08.24'
+  hero: /portfolio/HealthyJuly24/A3_Tarot V1_RGB.webp
+  description: 'Very excited to work for my personal favourite club night in Glasgow!'
+  gallery:
+    - /portfolio/HealthyJuly24/A3_Tarot V1_RGB.webp
+    - /portfolio/HealthyJuly24/Square_Leg Front_Tarot V2_RGB.webp
+
+- title: Healthy X DJ Marcelle/DJ Travella
+  tags: [2d, poster, video, club]
+  date: '08.10.24'
+  hero: /portfolio/HealthySept24/Cat_6__2.webp
+  description: 'Very excited to work for my personal favourite club night in Glasgow for a poster for 2 of my fave DJs!'
+  gallery:
+    - /portfolio/HealthySept24/Cat_6__2.webp
+    - /portfolio/HealthySept24/Cat_1.webp
+    - /portfolio/HealthySept24/Cat_2.webp
+    - /portfolio/HealthySept24/Cat_3.webp
+    - /portfolio/HealthySept24/Cat_4.webp
+    - /portfolio/HealthySept24/Cat_5_v1.webp
+
+- title: Stereo's 16th Birthday
+  tags: [3d, poster, video, club]
+  date: '25.11.23'
+  hero: /portfolio/StereoNov23/Poster VersionArtboard 7.webp
+  description: 'A collab with the stereo team to make a poster and video for their 16th birthday party. Made the main poster/video as well as some special ID cards for the artists'
+  gallery:
+    - /portfolio/StereoNov23/Poster VersionArtboard 7.webp
+    - /portfolio/StereoNov23/VAJ Power.mp4
+    - /portfolio/StereoNov23/Lung Leg.mp4
+    - /portfolio/StereoNov23/Good Body.mp4
+
+- title: Shakara
+  tags: [3d, poster, club]
+  date: '16.02.24'
+  hero: /portfolio/ShakaraFeb24/Poster Render 4.webp
+  description: 'Messing around with some stippled 3d effects in Blenders compositor for a poster for Shakara in Glasgow'
+
+- title: Club Sylkie X Body Parts @ Exit Glasgow
+  tags: [3d, 2d, poster, club]
+  date: '23.03.24'
+  hero: /portfolio/ClubSylkieXBodyPartsMarch24/FinalCyanoype White - smaller images - logo reversed copy 2@2x.webp
+  description: 'A poster for a night I put on with the excellent Club Sylkie. A combo 3D/2D poster with gradient effects to give a cyanotype feel'
+  gallery:
+    - /portfolio/ClubSylkieXBodyPartsMarch24/FinalCyanoype White - smaller images - logo reversed copy 2@2x.webp
+    - /portfolio/ClubSylkieXBodyPartsMarch24/FinalArtboard 15@2x.webp
+
+- title: EHFM @ Sneaky Pete's Edinburgh
+  tags: [3d, poster, club]
+  date: '04.02.22'
+  hero: /portfolio/EHFMFeb2022/PNG_A3 Version.webp
+  description: 'After getting obsessed with the Baz Lurhmann version of Elvis, I designed this jewel encrusted poster for EHFM in Edinburgh. Made in Blender and Adobe Illustrator.'
+  gallery:
+    - /portfolio/EHFMFeb2022/PNG_A3 Version.webp
+    - /portfolio/EHFMFeb2022/PNG_Square Version_Square Version.webp

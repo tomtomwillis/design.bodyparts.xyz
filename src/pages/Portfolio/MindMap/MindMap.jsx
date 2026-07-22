@@ -1,4 +1,4 @@
-import { useRef, useCallback, useEffect } from 'react'
+import { useRef, useCallback, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ReactFlow, Background, useNodesState, useEdgesState } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
@@ -6,7 +6,7 @@ import { portfolioItems } from '../../../data/portfolio'
 import { nodeTypes } from './MindMapNodes'
 import styles from './MindMap.module.css'
 
-const DECAY = 0.3
+const DECAY = 0.8
 const VELOCITY_ALPHA = 0.6
 
 export default function MindMap() {
@@ -16,6 +16,8 @@ export default function MindMap() {
 
   const [nodes, , onNodesChange] = useNodesState(item?.mindmap?.nodes ?? [])
   const [edges, , onEdgesChange] = useEdgesState(item?.mindmap?.edges ?? [])
+
+  const [exiting, setExiting] = useState(false)
 
   const rfInstanceRef = useRef(null)
   const velocityRef = useRef({ x: 0, y: 0 })
@@ -53,8 +55,8 @@ export default function MindMap() {
   }, [])
 
   const handleMoveEnd = useCallback(() => {
+    if (isMomentumRef.current) return
     if (!rfInstanceRef.current) return
-    cancelAnimationFrame(animFrameRef.current)
 
     let vx = velocityRef.current.x
     let vy = velocityRef.current.y
@@ -67,6 +69,7 @@ export default function MindMap() {
       vy *= DECAY
       if (Math.abs(vx) < 0.05 && Math.abs(vy) < 0.05) {
         isMomentumRef.current = false
+        velocityRef.current = { x: 0, y: 0 }
         return
       }
       const { x, y, zoom } = rfInstanceRef.current.getViewport()
@@ -77,18 +80,23 @@ export default function MindMap() {
     animFrameRef.current = requestAnimationFrame(step)
   }, [])
 
+  function handleBack() {
+    setExiting(true)
+    setTimeout(() => navigate('/portfolio'), 450)
+  }
+
   if (!item) {
     return (
       <div className={styles.notFound}>
-        <button onClick={() => navigate('/portfolio')} className={styles.back}>← Back</button>
+        <button onClick={handleBack} className={styles.back}>← Back</button>
         <p>Project not found.</p>
       </div>
     )
   }
 
   return (
-    <div className={styles.canvas} onPointerDown={handlePointerDown}>
-      <button onClick={() => navigate('/portfolio')} className={styles.back}>← Back</button>
+    <div className={`${styles.canvas} ${exiting ? styles.canvasExit : ''}`} onPointerDown={handlePointerDown}>
+      <button onClick={handleBack} className={styles.back}>← Back</button>
       <ReactFlow
         nodes={nodes}
         edges={edges}

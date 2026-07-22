@@ -11,9 +11,14 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/portfolio/all" element={<Portfolio />} />
       <Route path="/portfolio/poster" element={<Portfolio />} />
       <Route path="/portfolio/web" element={<Portfolio />} />
-      <Route path="/portfolio/more" element={<Portfolio />} />
+      <Route path="/portfolio/3d" element={<Portfolio />} />
+      <Route path="/portfolio/2d" element={<Portfolio />} />
+      <Route path="/portfolio/club" element={<Portfolio />} />
+      <Route path="/portfolio/logo" element={<Portfolio />} />
+      <Route path="/portfolio/branding" element={<Portfolio />} />
       <Route path="/portfolio/:slug" element={<MindMap />} />
       <Route path="/body-parts" element={<BodyParts />} />
     </Routes>

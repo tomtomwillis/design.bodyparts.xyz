@@ -31,22 +31,31 @@
   margin-top: 0.4rem;
 }
 
+/* Grid-track reveal instead of animating max-height: no arbitrary height
+   cap to guess, and the browser only resizes a single grid track rather
+   than reflowing against that cap. The <ul> keeps its own layout (li's
+   must stay direct children); it's just the grid item here. */
 .subMenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.35s ease, opacity 0.25s ease;
+}
+
+.subMenuOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 0.25rem;
+}
+
+.subMenuList {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
   padding-left: 0.25rem;
   overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.35s ease, opacity 0.25s ease;
-}
-
-.subMenuOpen {
-  max-height: 4rem;
-  opacity: 1;
-  margin-top: 0.25rem;
+  min-height: 0;
 }
 
 .subItem {
@@ -69,17 +78,22 @@
 }
 
 .aboutMenu {
-  overflow: hidden;
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  transition: max-height 0.25s ease-in, opacity 0.2s ease-in;
+  transition: grid-template-rows 0.25s ease-in, opacity 0.2s ease-in;
 }
 
 .aboutMenuOpen {
-  max-height: 9rem;
+  grid-template-rows: 1fr;
   opacity: 1;
   margin-top: 0.35rem;
-  transition: max-height 0.35s ease-out, opacity 0.3s ease-out;
+  transition: grid-template-rows 0.35s ease-out, opacity 0.3s ease-out;
+}
+
+.aboutMenuInner {
+  overflow: hidden;
+  min-height: 0;
 }
 
 .aboutBio {

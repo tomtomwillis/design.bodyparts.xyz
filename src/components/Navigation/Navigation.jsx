@@ -33,21 +33,23 @@ export default function Navigation({ portfolioOpen: portfolioOpenProp, onPortfol
           About <span className={styles.toggle}>{aboutOpen ? '−' : '+'}</span>
         </button>
         <div className={`${styles.aboutMenu} ${aboutOpen ? styles.aboutMenuOpen : ''}`}>
-          <p className={styles.aboutBio}>
-            A design alias of SE London artist and clubber Body Parts. He creates works in 3D, 2D and cyberspace. He also runs an irregular Glasgow/London club night and is a founder of YabbyVille.
-          </p>
-          <ul className={styles.aboutLinks}>
-            <li>
-              <a href="https://instagram.com/body_bits_" target="_blank" rel="noopener noreferrer" className={styles.subItem}>
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a href="mailto:tom.willis@hotmail.com" className={styles.subItem}>
-                Contact Me
-              </a>
-            </li>
-          </ul>
+          <div className={styles.aboutMenuInner}>
+            <p className={styles.aboutBio}>
+              A design alias of SE London artist and clubber Body Parts. He creates works in 3D, 2D and cyberspace. He also runs an irregular Glasgow/London club night and is a founder of YabbyVille.
+            </p>
+            <ul className={styles.aboutLinks}>
+              <li>
+                <a href="https://instagram.com/body_bits_" target="_blank" rel="noopener noreferrer" className={styles.subItem}>
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="mailto:tom.willis@hotmail.com" className={styles.subItem}>
+                  Contact Me
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -60,17 +62,20 @@ export default function Navigation({ portfolioOpen: portfolioOpenProp, onPortfol
           Portfolio <span className={styles.toggle}>{isPortfolioOpen ? '−' : '+'}</span>
         </button>
         {!onPortfolioToggle && (
-          <ul className={`${styles.subMenu} ${isPortfolioOpen ? styles.subMenuOpen : ''}`}>
-            {[
-              { label: 'Poster', path: '/portfolio/poster' },
-              { label: 'Web', path: '/portfolio/web' },
-              { label: 'More', path: '/portfolio/more' },
-            ].map((cat) => (
-              <li key={cat.path}>
-                <Link to={cat.path} className={styles.subItem}>{cat.label}</Link>
-              </li>
-            ))}
-          </ul>
+          <div className={`${styles.subMenu} ${isPortfolioOpen ? styles.subMenuOpen : ''}`}>
+            <ul className={styles.subMenuList}>
+              {[
+                { label: 'All', path: '/portfolio/all' },
+                { label: 'Poster', path: '/portfolio/poster' },
+                { label: 'Web', path: '/portfolio/web' },
+                { label: 'More', path: '/portfolio/more' },
+              ].map((cat) => (
+                <li key={cat.path}>
+                  <Link to={cat.path} className={styles.subItem}>{cat.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 

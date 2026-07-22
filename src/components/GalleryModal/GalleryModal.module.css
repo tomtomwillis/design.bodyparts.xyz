@@ -1,0 +1,147 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.95);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 1.5rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  color: var(--color-primary);
+  opacity: 0.5;
+  z-index: 10;
+  display: flex;
+  transition: opacity 0.15s;
+}
+
+.close:hover { opacity: 1; }
+
+/* ── Outer row: carousel + side panel ── */
+.layout {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: min(90vw, 1100px);
+}
+
+/* ── Carousel: arrows + image ── */
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.arrow {
+  color: var(--color-primary);
+  opacity: 0.35;
+  flex-shrink: 0;
+  display: flex;
+  transition: opacity 0.15s;
+  padding: 0.25rem;
+}
+
+.arrow:hover { opacity: 1; }
+
+/* ── Image area ── */
+.imageWrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Current (entering) image — in flow, sizes the wrap */
+.image {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  display: block;
+  position: relative;
+}
+
+/* Outgoing image — absolutely overlaid so it doesn't affect layout */
+.imageOutgoing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Slide animations ── */
+@keyframes fromRight { from { opacity: 0; transform: translateX(52px); }  to { opacity: 1; transform: translateX(0); } }
+@keyframes fromLeft  { from { opacity: 0; transform: translateX(-52px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes toLeft    { from { opacity: 1; transform: translateX(0); }  to { opacity: 0; transform: translateX(-52px); } }
+@keyframes toRight   { from { opacity: 1; transform: translateX(0); }  to { opacity: 0; transform: translateX(52px);  } }
+
+.enterRight { animation: fromRight 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.enterLeft  { animation: fromLeft  0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.exitLeft   { animation: toLeft    0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.exitRight  { animation: toRight   0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* ── Side panel: next image preview (wide screens only) ── */
+.sidePanel {
+  display: none;
+  flex-shrink: 0;
+  width: 170px;
+  opacity: 0.35;
+  transition: opacity 0.2s;
+  text-align: left;
+  overflow: hidden;
+}
+
+.sidePanel:hover { opacity: 0.75; }
+
+.sidePanelImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sidePanelVideo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-primary);
+}
+
+/* ── Counter ── */
+.counter {
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.4;
+  margin-top: 1rem;
+}
+
+/* ── Wide screens: reveal side panel ── */
+@media (min-width: 900px) {
+  .sidePanel { display: block; }
+}
+
+/* ── Narrow screens ── */
+@media (max-width: 600px) {
+  .overlay  { padding: 1rem 0.25rem 0.75rem; }
+  .layout   { gap: 0; max-width: 100vw; }
+  .carousel { gap: 0; }
+  .arrow    { opacity: 0.6; padding: 0.5rem; }
+  .image, .imageWrap { max-height: calc(100vh - 6.5rem); }
+}

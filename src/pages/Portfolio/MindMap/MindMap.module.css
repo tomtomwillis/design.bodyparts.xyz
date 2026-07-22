@@ -1,8 +1,23 @@
+@keyframes slideUp {
+  from { transform: translateY(100vh); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(0); }
+  to   { transform: translateY(100vh); }
+}
+
 .canvas {
   width: 100vw;
   height: 100vh;
   background-color: var(--color-bg);
   position: relative;
+  animation: slideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.canvasExit {
+  animation: slideDown 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .back {
