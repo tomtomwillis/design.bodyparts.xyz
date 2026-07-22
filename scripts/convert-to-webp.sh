@@ -75,7 +75,7 @@ while IFS= read -r -d '' file; do
 
   printf "Converting: %s\n" "$file"
 
-  if cwebp -q 85 -mt "${args[@]}" "$file" -o "$output" 2>/dev/null; then
+  if cwebp -q 85 -mt ${args[@]+"${args[@]}"} "$file" -o "$output" 2>/dev/null; then
     backup_original "$file"
     rm "$file"
     converted=$((converted + 1))

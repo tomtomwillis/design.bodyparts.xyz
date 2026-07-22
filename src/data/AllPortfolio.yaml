@@ -4,6 +4,7 @@
   page: Suzio0526
   hero: /portfolio/SuzioMay26/StillImageMedium.webp
   gallery:
+    - /portfolio/SuzioMay26/Final Video.mp4
     - /portfolio/SuzioMay26/StillImageMedium.webp
     - /portfolio/SuzioMay26/A3 - unedited Medium.webp
   description: 'Poster and video for Suzio, a club night in London founded by Manuka Honey. The video and poster were made in Blender.'
@@ -31,6 +32,7 @@
   hero: /portfolio/HesseAvalonOct25/V5.webp
   gallery:
     - /portfolio/HesseAvalonOct25/V5.webp
+    - /portfolio/HesseAvalonOct25/DOD Video.mp4
   description: 'Design for a fundraiser event at Avalon Cafe inspired by the visuals of the Series of Unfortunate events film.'
 
 - title: Suzio X Squish San Francisco
@@ -234,3 +236,51 @@
   gallery:
     - /portfolio/EHFMFeb2022/PNG_A3 Version.webp
     - /portfolio/EHFMFeb2022/PNG_Square Version_Square Version.webp
+
+- title: Club Syklie X AYA
+  tags: [3d, poster, club]
+  date: '23.02.23'
+  hero: /portfolio/ClubSylkieFeb23/PNG_Full Poster.webp
+  description: 'First of three times working with nights putting on AYA - another favourite DJ of mine'
+  gallery:
+    - /portfolio/ClubSylkieFeb23/PNG_Full Poster.webp
+    - /portfolio/ClubSylkieFeb23/Black Background_Poster Black Background.webp
+    - /portfolio/ClubSylkieFeb23/Instagram2.webp
+    - /portfolio/ClubSylkieFeb23/Instagram3a.webp
+    - /portfolio/ClubSylkieFeb23/Instagram3b.webp
+
+- title: Kintu Logo Design
+  tags: [2d, Branding]
+  date: '12.03.24'
+  hero: /portfolio/KintuMarch24/Kin_TuOrange + BlueMedium_PNG.webp
+  description: 'Logo design for the clubnight/record label Kintu - from Glasgow DJ Maveen.'
+  gallery:
+    - /portfolio/KintuMarch24/Kin_TuOrange + BlueMedium_PNG.webp
+    - /portfolio/KintuMarch24/Kin_TuGreen + PurpleMedium_PNG.webp
+    - /portfolio/KintuMarch24/Kin_TuGreen + NavyMedium_PNG.webp
+
+- title: BRAVA x yourboykiran - Calamaté single cover
+  tags: [3d, Branding, club]
+  date: '08.04.23'
+  hero: /portfolio/BravaApril23/Full Cover_JPG_2400x2400pixels_300dpi-01.webp
+  description: 'Cover design for a single by club artists yourboykiran and BRAVA'
+
+- title: SMFM @ Ron's Peckham
+  tags: [2d, poster]
+  date: '15.03.23'
+  hero: /portfolio/SMFMMarch25/A3_6.webp
+  description: '2D design work for a day of live radio by London based station Sister Midnight FM in Peckham.'
+
+- title: Body Parts @ Telegraph Hill Cafe
+  tags: [2d, poster]
+  date: '27.04.25'
+  hero: /portfolio/BodyPartsApril25/Poster Scan Large.webp
+  description: 'A risograph printed poster I made for my own event thrown for my birthday in London. Poster printed by Pagemasters Lewisham.'
+
+- title: Ponyboy December Teaser Video
+  tags: [3d, club, video]
+  date: '01.12.23'
+  hero: /portfolio/PonyBoyDec23/Screenshot 2026-07-23 at 12.22.18 am.webp
+  description: 'Video teaser for the Christmas 2023 edition of Ponyboy.'
+  gallery:
+    - /portfolio/PonyBoyDec23/Tease Render v5 edited.mp4

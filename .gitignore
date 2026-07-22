@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 assets
+
+# WebP conversion backups (see scripts/convert-to-webp.sh)
+public/portfolio/tobedeleted/
