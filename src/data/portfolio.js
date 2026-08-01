@@ -14,15 +14,35 @@ function resolvePublicPath(path) {
   return BASE + path.replace(/^\//, '')
 }
 
+// Tags are listed in whatever order feels natural per item in the YAML, but
+// they should always render in the same order. This matches the category nav
+// order on the Portfolio page; anything unlisted sorts alphabetically after.
+const TAG_ORDER = ['poster', 'web', '3d', '2d', 'club', 'video', 'branding']
+
+function sortTags(tags = []) {
+  return [...tags].sort((a, b) => {
+    const ai = TAG_ORDER.indexOf(a)
+    const bi = TAG_ORDER.indexOf(b)
+    if (ai === -1 && bi === -1) return a.localeCompare(b)
+    if (ai === -1) return 1
+    if (bi === -1) return -1
+    return ai - bi
+  })
+}
+
 function buildItem(info, detail, id) {
   return {
     id,
     title: info.title,
-    tags: info.tags,
+    tags: sortTags(info.tags),
     date: info.date,
     page: info.page,
     hero: resolvePublicPath(info.hero),
     gallery: (info.gallery ?? []).map(resolvePublicPath),
+    links: (info.links ?? []).map((link) => ({
+      label: link.label,
+      url: link.url,
+    })),
     description: info.description ?? null,
     mindmap: {
       nodes: (detail?.nodes ?? []).map((node) => ({

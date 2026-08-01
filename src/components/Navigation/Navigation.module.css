@@ -7,14 +7,14 @@
 .navItem {
   font-family: var(--font-primary);
   font-size: var(--nav-font-size);
-  color: var(--color-text-nav);
+  color: var(--color-primary);
   line-height: 1.1;
   display: block;
   text-align: left;
 }
 
 .navItem:hover {
-  opacity: 0.75;
+  color: var(--color-text-nav);
 }
 
 .portfolioGroup {

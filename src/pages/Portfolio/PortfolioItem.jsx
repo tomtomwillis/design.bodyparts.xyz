@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import GalleryModal from '../../components/GalleryModal/GalleryModal'
 import styles from './Portfolio.module.css'
 
-export default function PortfolioItem({ page, title, tags, date, description, gallery, isActive, isPrevRow, isExpanded, onToggle, onMouseEnter, onMouseLeave }) {
+export default function PortfolioItem({ page, title, tags, date, description, gallery, links, isActive, isPrevRow, isExpanded, onToggle, onMouseEnter, onMouseLeave }) {
   const navigate = useNavigate()
   const [galleryOpen, setGalleryOpen] = useState(false)
   const contentRef = useRef(null)
@@ -13,7 +13,7 @@ export default function PortfolioItem({ page, title, tags, date, description, ga
     if (isExpanded && contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight)
     }
-  }, [isExpanded, description, gallery, page])
+  }, [isExpanded, description, gallery, links, page])
 
   const rowClass = [
     styles.row,
@@ -30,7 +30,18 @@ export default function PortfolioItem({ page, title, tags, date, description, ga
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <td className={styles.cell}>{title}</td>
+        <td className={`${styles.cell} ${styles.titleCell}`}>
+          {/* Positioned in the gutter left of the table (see .star), so it takes
+              no space in the row as it fades in and out with the preview
+              cycling between items. */}
+          <span
+            className={`${styles.star} ${isActive || isExpanded ? styles.starVisible : ''}`}
+            aria-hidden="true"
+          >
+            ✦
+          </span>
+          {title}
+        </td>
         <td className={styles.cell}>
           {tags.map((tag) => (
             <span key={tag} className={styles.tag}>{tag}</span>
@@ -63,13 +74,25 @@ export default function PortfolioItem({ page, title, tags, date, description, ga
                     Behind The Scenes
                   </button>
                 )}
+                {links?.map((link) => (
+                  <a
+                    key={link.url}
+                    className={styles.linkButton}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </td>
       </tr>
       {galleryOpen && (
-        <GalleryModal images={gallery} onClose={() => setGalleryOpen(false)} />
+        <GalleryModal images={gallery} title={title} onClose={() => setGalleryOpen(false)} />
       )}
     </Fragment>
   )

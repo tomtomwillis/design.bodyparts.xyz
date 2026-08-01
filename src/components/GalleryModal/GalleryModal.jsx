@@ -27,7 +27,7 @@ function MediaItem({ src, className, playing = false, alt = '', onClick }) {
   return <img src={src} alt={alt} className={className} onClick={onClick} />
 }
 
-export default function GalleryModal({ images, onClose }) {
+export default function GalleryModal({ images, title, onClose }) {
   const [index, setIndex] = useState(0)
   const [outgoing, setOutgoing] = useState(null)    // { idx, dir: 'left'|'right' }
   const [incomingDir, setIncomingDir] = useState(null)
@@ -133,8 +133,13 @@ export default function GalleryModal({ images, onClose }) {
         )}
       </div>
 
-      {multiple && (
-        <span className={styles.counter}>{index + 1} / {images.length}</span>
+      {(title || multiple) && (
+        <div className={styles.caption}>
+          {title && <span className={styles.title}>{title}</span>}
+          {multiple && (
+            <span className={styles.counter}>{index + 1} / {images.length}</span>
+          )}
+        </div>
       )}
     </div>,
     document.body

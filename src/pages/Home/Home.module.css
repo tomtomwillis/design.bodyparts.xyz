@@ -17,12 +17,16 @@
   position: relative;
 }
 
+
 .title {
   position: absolute;
   top: var(--title-top);
   left: 3rem;
   width: clamp(15rem, 40vw, 35rem);
-  height: auto;
+  aspect-ratio: 842 / 510;
+  background-color: var(--color-primary);
+  -webkit-mask: url('/Title.svg') no-repeat center / contain;
+  mask: url('/Title.svg') no-repeat center / contain;
   pointer-events: none;
 }
 

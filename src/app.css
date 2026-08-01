@@ -13,11 +13,17 @@
 }
 
 :root {
-  --color-bg: #EAF5FF;
-  --color-primary: #FFBAEB;
-  --color-text-nav: #FFBAEB;
-  --color-text-sub: #f9a8d4;
-  --color-accent: #3b82f6;
+  --color-bg: #5A5C2A;
+  --color-primary: #c2e781;
+  --color-text-nav: #ebebeb;
+  --color-text-sub: #e0e0e0;
+  --color-accent: #57f79a;
+  --color-title: #ffffff;
+
+  /* Shape of the wave underline on the active / expanded portfolio rows. Used
+     as a mask, so the stroke colour here is irrelevant — only its alpha is
+     read, and the wave takes whatever colour the rule paints underneath. */
+  --wave-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='4'%3E%3Cpath d='M0,2 Q5,0.5 10,2 Q15,3.5 20,2' stroke='%23000' stroke-width='1' fill='none'/%3E%3C/svg%3E");
 
   --font-primary: 'PackTRIALHard', sans-serif;
   --font-secondary: 'IoskeleyMono', monospace;

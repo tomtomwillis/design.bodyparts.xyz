@@ -1,6 +1,14 @@
+/* Scrolls the mask, not a background image — see .catLink::after for why the
+   wave is masked rather than drawn. One full 20px repeat, so it loops seamlessly. */
 @keyframes waveScroll {
-  from { background-position-x: 0; }
-  to   { background-position-x: 20px; }
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 20px 0;
+    mask-position: 20px 0;
+  }
 }
 
 @keyframes slideUp {
@@ -17,7 +25,10 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  padding: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
   animation: slideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -29,7 +40,6 @@
 .body {
   display: flex;
   gap: 3rem;
-  margin-top: 2rem;
   min-height: 0;
 }
 
@@ -113,6 +123,10 @@
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding-right: 0.85rem;
+  /* gutter the row marker hangs in — it lives outside the table so it can't
+     shift the titles. Padding rather than a negative offset because the
+     horizontal overflow here is hidden, which would clip anything further left. */
+  padding-left: 1.25rem;
   /* keeps the last row clear of the scroll-hint chevrons */
   padding-bottom: 2.5rem;
   /* native scrollbar is hidden in favour of the always-visible custom track/thumb below */
@@ -140,6 +154,8 @@
   gap: 0.3rem;
   height: 3rem;
   padding-bottom: 0.4rem;
+  /* the scrim spans the full width, so it stays click-through — only the
+     button inside it takes clicks, leaving the rows beneath reachable */
   pointer-events: none;
   z-index: 2;
   color: var(--color-primary);
@@ -152,6 +168,26 @@
 
 .scrollHintHidden {
   opacity: 0;
+}
+
+.scrollHintButton {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.3rem;
+  /* padding is the hit area — the chevrons alone are too small to aim at */
+  padding: 0.5rem 0.9rem 0.15rem;
+  color: inherit;
+  pointer-events: auto;
+  transition: transform 0.15s ease;
+}
+
+.scrollHintButton:hover {
+  transform: translateY(2px);
+}
+
+/* nothing to click once the list is scrolled to the end */
+.scrollHintHidden .scrollHintButton {
+  pointer-events: none;
 }
 
 .scrollHint svg {
@@ -254,11 +290,13 @@
 .back {
   font-family: var(--font-secondary);
   font-size: 0.75rem;
-  color: var(--color-primary);
+  color: var(--color-text-nav);
   align-self: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
 }
 
 .back:hover {
@@ -278,6 +316,9 @@
   font-size: clamp(3rem, 7vw, 6rem);
   color: var(--color-primary);
   line-height: 1;
+  /* decorative — and its text box reaches beyond the glyphs, so leaving it
+     selectable means stray highlights well outside the visible title */
+  user-select: none;
 }
 
 .catNav {
@@ -286,9 +327,13 @@
 }
 
 .catLink {
+  position: relative;
+  display: inline-block;
+  /* room for the underline to sit under the text without touching it */
+  padding-bottom: 0.4rem;
   font-family: var(--font-secondary);
-  font-size: 0.75rem;
-  color: var(--color-primary);
+  font-size: 0.8rem;
+  color: var(--color-text-nav);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.5;
@@ -297,6 +342,32 @@
 .catLink:hover,
 .catLinkActive {
   opacity: 1;
+}
+
+/* Underline on the selected filter, wiping in from the left. Grown by width
+   rather than scaleX so the wave's 20px repeat isn't squashed while it
+   animates — a scaled-up pattern would stretch, then snap.
+
+   The wave is a solid --color-primary fill clipped to an SVG mask, rather than
+   the SVG drawn as a background image: an SVG loaded through url() renders in
+   its own document and can't read our custom properties, so a background
+   version would need the colour hardcoded into the data URI. */
+.catLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  background: var(--color-primary);
+  -webkit-mask: var(--wave-shape) 0 0 / 20px 4px repeat-x;
+  mask: var(--wave-shape) 0 0 / 20px 4px repeat-x;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.catLinkActive::after {
+  width: 100%;
+  animation: waveScroll 3s linear infinite;
 }
 
 /* Grid-track reveal instead of animating max-width/margin-left: the box
@@ -340,7 +411,6 @@
   letter-spacing: 0.05em;
   padding: 0 0 0.6rem 0;
   text-align: left;
-  opacity: 0.5;
 }
 
 .headCell.dateCell {
@@ -350,22 +420,48 @@
 .row {
   border-bottom: 1px solid var(--color-primary);
   cursor: pointer;
+  transition: color 0.15s ease;
 }
 
 .row:hover {
-  opacity: 0.7;
+  color: var(--color-title);
 }
 
+/* Rows carrying a wave: the wave replaces the 1px border they'd otherwise have. */
 .rowActive,
 .rowPrevActive,
-.headRowActive {
+.headRowActive,
+.expandedRowOpen {
   border-bottom: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='4'%3E%3Cpath d='M0,2 Q5,0.5 10,2 Q15,3.5 20,2' stroke='%23FFBAEB' stroke-width='1' fill='none'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-origin: border-box;
-  background-position: 0 100%;
-  background-size: 20px 4px;
+}
+
+/* Containing block for the ::after below. .headRowActive is deliberately left
+   out — .headRow is already position: sticky, which does the same job here, and
+   a `relative` would unstick the header. */
+.rowActive,
+.rowPrevActive,
+.expandedRowOpen {
+  position: relative;
+}
+
+/* Drawn on a pseudo-element rather than as the row's own background, so it can
+   be a masked --color-primary fill (see .catLink::after). Masking the row
+   itself would clip its text along with the wave. */
+.rowActive::after,
+.rowPrevActive::after,
+.headRowActive::after,
+.expandedRowOpen::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--color-primary);
+  -webkit-mask: var(--wave-shape) 0 0 / 20px 4px repeat-x;
+  mask: var(--wave-shape) 0 0 / 20px 4px repeat-x;
   animation: waveScroll 3s linear infinite;
+  pointer-events: none;
 }
 
 .cell {
@@ -379,12 +475,34 @@
   opacity: 0.6;
 }
 
+/* containing block for the marker below */
+.titleCell {
+  position: relative;
+}
+
+/* ── Marker on the row whose image is in the preview, or which is open ──
+   Sits in .tableWrap's left padding, clear of the table itself, so it takes no
+   space in the cell and the title never moves as it fades in and out. */
+.star {
+  position: absolute;
+  right: calc(100% + 0.35rem);
+  top: 50%;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.6);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.starVisible {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  color: var(--color-text-nav);
+}
+
 .tag {
   display: inline-block;
   margin-right: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  opacity: 0.75;
 }
 
 .tag:last-child {
@@ -399,15 +517,7 @@
   /* no border or height when collapsed */
 }
 
-.expandedRowOpen {
-  border-bottom: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='4'%3E%3Cpath d='M0,2 Q5,0.5 10,2 Q15,3.5 20,2' stroke='%23FFBAEB' stroke-width='1' fill='none'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-origin: border-box;
-  background-position: 0 100%;
-  background-size: 20px 4px;
-  animation: waveScroll 3s linear infinite;
-}
+/* .expandedRowOpen's wave is defined with the other wave rows further up. */
 
 .expandedCell {
   padding: 0;
@@ -431,7 +541,7 @@
 .description {
   font-family: var(--font-secondary);
   font-size: 0.75rem;
-  color: var(--color-primary);
+  color: var(--color-title);
   line-height: 1.6;
   margin-bottom: 0.9rem;
   max-width: 40rem;
@@ -445,7 +555,9 @@
   align-items: center;
 }
 
-.galleryButton {
+.galleryButton,
+.btsButton,
+.linkButton {
   font-family: var(--font-secondary);
   font-size: 0.75rem;
   color: var(--color-primary);
@@ -456,23 +568,9 @@
   transition: background 0.15s, color 0.15s;
 }
 
-.galleryButton:hover {
-  background: var(--color-primary);
-  color: var(--color-bg);
-}
-
-.btsButton {
-  font-family: var(--font-secondary);
-  font-size: 0.75rem;
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid var(--color-primary);
-  padding: 0.35rem 0.85rem;
-  transition: background 0.15s, color 0.15s;
-}
-
-.btsButton:hover {
+.galleryButton:hover,
+.btsButton:hover,
+.linkButton:hover {
   background: var(--color-primary);
   color: var(--color-bg);
 }
@@ -506,8 +604,11 @@
     display: none;
   }
 
+  /* Mirror the star's gutter on the right so the table itself sits centred on
+     the page — the marker hangs in the left padding and doesn't pull the list
+     off-centre. (No scroll track on mobile, so the right gutter is free.) */
   .tableWrap {
-    padding-right: 0;
+    padding-right: 1.25rem;
   }
 
   /* sits lower, over the bottom spacer, so it clears the last row */

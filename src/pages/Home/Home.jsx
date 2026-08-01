@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={styles.layout}>
       <div className={styles.left}>
-        <img src={`${import.meta.env.BASE_URL}Title.svg`} alt="Body Bits" className={styles.title} />
+        <div role="img" aria-label="Body Bits" className={styles.title} />
 
         <Navigation
           onPortfolioToggle={() => navigate('/portfolio')}

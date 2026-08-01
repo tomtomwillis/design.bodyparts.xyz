@@ -1,7 +1,7 @@
 - title: Suzio - The Final Dance @ Colour Factory London
   tags: [poster, 3d, video, club]
   date: '18.05.26'
-  page: Suzio0526
+  # page: Suzio0526
   hero: /portfolio/SuzioMay26/StillImageMedium.webp
   gallery:
     - /portfolio/SuzioMay26/Final Video.mp4
@@ -12,9 +12,23 @@
 - title: Trough 05 @ Avalon Cafe London
   tags: [poster, 3d, club]
   date: '11.03.26'
-  page: example-website
+  # page: example-website
   hero: /portfolio/Trough05/Artboard2.webp
-  description: ''
+  description: 'Another design for the Trough crew this time inspired by their dog logo'
+
+- title: Yabbyville - Music-based social network
+  tags: [web, branding]
+  date: '01.01.26'
+    
+  hero: /portfolio/Yabbyville/8B6203A2-0E79-440F-ABDA-5BB6C77FBE95_1_201_a.webp
+  description: 'A music-based private social network that I have been developing with a group of music friends. The site operates as a front-end for a navidrome server to let people share their favourite music through virtual stickers and a messageboard. The project has expanded to include film clubs, travel advice pages and more.'
+  gallery:
+    - /portfolio/Yabbyville/8B6203A2-0E79-440F-ABDA-5BB6C77FBE95_1_201_a.webp
+    - /portfolio/Yabbyville/7BB08448-FC0C-4993-88EA-F995F4C76509_1_201_a.webp
+    - /portfolio/Yabbyville/6E847359-5643-459C-8EAF-FC25D58DF306_1_201_a.webp
+  links:
+    - label: Github
+      url: https://github.com/tomtomwillis/Yabby
 
 - title: SMFM @ Carpet Shop
   tags: [poster, 2d, club]
@@ -45,6 +59,9 @@
   tags: [poster, 3d, video, club]
   date: '07.06.25'
   hero: /portfolio/SuzioMarch25/V5 Poster.webp
+  gallery:
+    - /portfolio/SuzioMarch25/video.mp4
+    - /portfolio/SuzioMarch25/V5 Poster.webp
   description: 'Wrestling themed poster and video for the Suzio crew. Made in Blender and Affinity Designer.'
 
 - title: Nick Léon x Stalagtiites
@@ -58,6 +75,11 @@
   date: '13.09.25'
   hero: /portfolio/TroughSept25/Screenshot.webp
   description: '2D web app poster to promote Trough 03 clubnight. The site would infinitely generate poster variations from a sample of 10000+ dog drawings downloaded from the google sketch dataset.'
+  links:
+    - label: Website
+      url: https://tomtomwillis.github.io/Trough-Poster/
+    - label: GitHub
+      url: https://github.com/tomtomwillis/Trough-Poster 
 
 - title: BRAVA - Unta La Salsa
   tags: [poster, 3d, club]
@@ -90,12 +112,20 @@
   tags: [3d, poster, video, club]
   date: '25.11.23'
   hero: /portfolio/SuzioNov23/PNG_Compressed.webp
+  gallery:
+    - /portfolio/SuzioNov23/PNG_Compressed.webp
+    - /portfolio/SuzioNov23/Final Video.mp4
+    - /portfolio/SuzioNov23/Background Image_High Res.webp
   description: 'My first design for the Suzio party - I went all in on the video and poster design in Blender.'
 
 - title: Club Sylkie @ Sneaky Pete's Edinburgh
   tags: [3d, poster, video, club]
   date: '27.10.23'
   hero: /portfolio/SylkieOct23-2/Final Render V1 Large.webp
+  gallery:
+    - /portfolio/SylkieOct23-2/Instagram Story.mp4
+    - /portfolio/SylkieOct23-2/Final Render V1 Large.webp
+    - /portfolio/SylkieOct23-2/Square Layout.webp
   description: 'Nature themed video and poster for Club syklie at Sneaky Pete in Edinburgh. Made in Blender and Affinity Designer.'
 
 - title: Unta La Chispa @ Venue MOT London
@@ -120,7 +150,10 @@
   tags: [3d, poster, video, club]
   date: '26.04.24'
   hero: /portfolio/SuzioApril24/Render_7.webp
-  description: 'Sexy desert cars for teh Suzio gang'
+  gallery:
+    - /portfolio/SuzioApril24/Render_7.webp
+    - /portfolio/SuzioApril24/video.mp4
+  description: 'Sexy desert cars for the Suzio gang'
 
 - title: Feel the Wind on Your Face @ Conditions 2024
   tags: [3d]
@@ -149,6 +182,7 @@
   hero: /portfolio/PonyBoyNov24/FINAL RENDER A3 POSTER.webp
   description: 'Spooky video and poster for hottest queer party in Glasgow.'
   gallery:
+    - /portfolio/PonyBoyNov24/video.mp4
     - /portfolio/PonyBoyNov24/FINAL RENDER A3 POSTER.webp
     - /portfolio/PonyBoyNov24/Square Fisheye Poster.webp
 
@@ -186,6 +220,7 @@
   hero: /portfolio/HealthyJuly24/A3_Tarot V1_RGB.webp
   description: 'Very excited to work for my personal favourite club night in Glasgow!'
   gallery:
+    - /portfolio/HealthyJuly24/video.mp4
     - /portfolio/HealthyJuly24/A3_Tarot V1_RGB.webp
     - /portfolio/HealthyJuly24/Square_Leg Front_Tarot V2_RGB.webp
 
@@ -195,6 +230,7 @@
   hero: /portfolio/HealthySept24/Cat_6__2.webp
   description: 'Very excited to work for my personal favourite club night in Glasgow for a poster for 2 of my fave DJs!'
   gallery:
+    - /portfolio/HealthySept24/video.mp4
     - /portfolio/HealthySept24/Cat_6__2.webp
     - /portfolio/HealthySept24/Cat_1.webp
     - /portfolio/HealthySept24/Cat_2.webp
@@ -208,6 +244,7 @@
   hero: /portfolio/StereoNov23/Poster VersionArtboard 7.webp
   description: 'A collab with the stereo team to make a poster and video for their 16th birthday party. Made the main poster/video as well as some special ID cards for the artists'
   gallery:
+    - /portfolio/StereoNov23/Instagram Video Loop.mp4
     - /portfolio/StereoNov23/Poster VersionArtboard 7.webp
     - /portfolio/StereoNov23/VAJ Power.mp4
     - /portfolio/StereoNov23/Lung Leg.mp4
@@ -250,7 +287,7 @@
     - /portfolio/ClubSylkieFeb23/Instagram3b.webp
 
 - title: Kintu Logo Design
-  tags: [2d, Branding]
+  tags: [2d, branding]
   date: '12.03.24'
   hero: /portfolio/KintuMarch24/Kin_TuOrange + BlueMedium_PNG.webp
   description: 'Logo design for the clubnight/record label Kintu - from Glasgow DJ Maveen.'
@@ -260,7 +297,7 @@
     - /portfolio/KintuMarch24/Kin_TuGreen + NavyMedium_PNG.webp
 
 - title: BRAVA x yourboykiran - Calamaté single cover
-  tags: [3d, Branding, club]
+  tags: [3d, branding, club]
   date: '08.04.23'
   hero: /portfolio/BravaApril23/Full Cover_JPG_2400x2400pixels_300dpi-01.webp
   description: 'Cover design for a single by club artists yourboykiran and BRAVA'

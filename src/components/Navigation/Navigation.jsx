@@ -44,8 +44,8 @@ export default function Navigation({ portfolioOpen: portfolioOpenProp, onPortfol
                 </a>
               </li>
               <li>
-                <a href="mailto:tom.willis@hotmail.com" className={styles.subItem}>
-                  Contact Me
+                <a href="mailto:design@bodyparts.xyz" className={styles.subItem}>
+                design@bodyparts.xyz
                 </a>
               </li>
             </ul>

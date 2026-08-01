@@ -6,8 +6,8 @@ import PortfolioItem from './PortfolioItem'
 import GalleryModal from '../../components/GalleryModal/GalleryModal'
 import styles from './Portfolio.module.css'
 
-const MAIN_CATEGORIES = ['all', 'poster', 'web', '3d', '2d']
-const MORE_CATEGORIES = ['club', 'video', 'branding']
+const MAIN_CATEGORIES = ['all', '3d', '2d', 'video', 'web']
+const MORE_CATEGORIES = ['branding', 'poster', 'club']
 const VALID_CATEGORIES = [...MAIN_CATEGORIES, ...MORE_CATEGORIES]
 const IDLE_INTERVAL_MS = 3000
 
@@ -208,6 +208,14 @@ export default function Portfolio() {
     e.currentTarget.releasePointerCapture(e.pointerId)
   }
 
+  // Nearly a full page per click, with a sliver of overlap so the row you were
+  // reading at the fold stays in view.
+  function handleScrollHintClick() {
+    const node = tableWrapRef.current
+    if (!node) return
+    node.scrollBy({ top: node.clientHeight * 0.8, behavior: 'smooth' })
+  }
+
   function handleTrackClick(e) {
     if (e.target !== e.currentTarget) return
     const track = e.currentTarget
@@ -379,9 +387,15 @@ export default function Portfolio() {
               </table>
             </div>
             <div className={`${styles.scrollHint} ${hintVisible ? '' : styles.scrollHintHidden}`}>
-              <ChevronDown size={16} strokeWidth={6} />
-              <ChevronDown size={16} strokeWidth={6} />
-              <ChevronDown size={16} strokeWidth={6} />
+              <button
+                className={styles.scrollHintButton}
+                onClick={handleScrollHintClick}
+                aria-label="Scroll list down"
+              >
+                <ChevronDown size={16} strokeWidth={6} />
+                <ChevronDown size={16} strokeWidth={6} />
+                <ChevronDown size={16} strokeWidth={6} />
+              </button>
             </div>
             <div
               className={styles.scrollTrack}
@@ -408,7 +422,7 @@ export default function Portfolio() {
       <div className={styles.bottomPadding} />
 
       {previewGalleryOpen && (
-        <GalleryModal images={previewImages} onClose={() => setPreviewGalleryOpen(false)} />
+        <GalleryModal images={previewImages} title={activeItem?.title} onClose={() => setPreviewGalleryOpen(false)} />
       )}
     </main>
   )

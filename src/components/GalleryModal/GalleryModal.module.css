@@ -121,7 +121,27 @@
   color: var(--color-primary);
 }
 
-/* ── Counter ── */
+/* ── Caption: item title + counter, below the image ── */
+.caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.85rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+}
+
 .counter {
   font-family: var(--font-secondary);
   font-size: 0.7rem;
@@ -129,7 +149,6 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   opacity: 0.4;
-  margin-top: 1rem;
 }
 
 /* ── Wide screens: reveal side panel ── */

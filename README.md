@@ -25,6 +25,7 @@ npm run dev
 | `npm run preview` | Serve the built output locally |
 | `npm run lint` | ESLint over the repo |
 | `npm run webp` | Convert/downsize portfolio images (see below) |
+| `npm run video` | Convert/compress portfolio videos (see below) |
 
 > There is no `deploy` script — pushing to `main` deploys. See [Deploy](#deploy).
 
@@ -57,6 +58,7 @@ public/
   portfolio/  model/  fonts/  Title.svg  favicon.svg  icons.svg
 scripts/
   convert-to-webp.sh
+  convert-video.sh
 ```
 
 ### How the data layer works
@@ -67,7 +69,8 @@ New detail files are picked up automatically — never edit `portfolio.js` to ad
 
 ## Adding a portfolio item
 
-1. Drop the images into `public/portfolio/<ItemFolder>/` and run `npm run webp`.
+1. Drop the images into `public/portfolio/<ItemFolder>/` and run `npm run webp`
+   (and `npm run video` if the item has video).
 2. Add an entry to [AllPortfolio.yaml](src/data/AllPortfolio.yaml):
 
    ```yaml
@@ -126,6 +129,28 @@ Converts every `.png/.jpg/.jpeg/.tiff` under `public/portfolio/` to WebP at qual
 downsizes anything whose long edge exceeds 2200px (2× the 1100px gallery modal, for retina).
 Originals — and any WebP shrunk in place — are copied to `public/portfolio/tobedeleted/`,
 mirroring their subfolder. Review, then delete that folder.
+
+## Video
+
+```bash
+npm run video    # requires: brew install ffmpeg
+```
+
+Standardises everything under `public/portfolio/` to web-friendly H.264 MP4 — `yuv420p` for
+broad browser support, AAC 128k audio, and `-movflags +faststart` so playback can begin
+before the whole file downloads. Two passes:
+
+1. **Convert** every `.mov/.webm/.avi/.m4v/.mkv` to `.mp4`.
+2. **Re-encode** existing `.mp4`s *in place*, but only if they need it — long edge over
+   1280px, or average bitrate over 4 Mbps.
+
+Knobs are the constants at the top of [convert-video.sh](scripts/convert-video.sh):
+`MAX_DIMENSION` (1280), `MAX_BITRATE` (4 Mbps), `CRF` (23 — lower is better/bigger), and
+`PRESET` (`slow`). CRF holds quality constant and lets the bitrate fall wherever the content
+allows, so re-running on already-processed files is a no-op.
+
+Originals — and any MP4 re-encoded in place — are copied to `public/portfolio/tobedeleted/`
+the same way `npm run webp` does it. Review, then delete that folder.
 
 ## Conventions
 

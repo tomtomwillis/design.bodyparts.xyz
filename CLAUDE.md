@@ -39,6 +39,21 @@ To add a new item:
 Items display in newest-first date order. `portfolio.js` picks up new PortfolioDetail files automatically — no edits needed there.
 No new component files are needed per item.
 
+### External links
+An item can carry an optional `links` list. Each entry renders as its own button in the item's
+expanded row, styled like the Gallery button, opening in a new tab:
+
+```yaml
+  links:
+    - label: Live Site
+      url: https://example.com
+    - label: Instagram
+      url: https://instagram.com/example
+```
+
+`label` is the button text and `url` is the destination — both are required per entry. Omit `links`
+entirely for items that don't need any.
+
 ## Git / GitHub
 Never add Claude as a co-author or contributor in git commits or on GitHub.
 
