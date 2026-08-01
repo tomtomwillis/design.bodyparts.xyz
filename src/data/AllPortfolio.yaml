@@ -140,11 +140,6 @@
   hero: /portfolio/SMFMMarch24/Checkerboard texture white.webp
   description: '2D work for radio fundraiser for London Radio Station SMFM'
 
-- title: SMFM @ Carpet Shop
-  tags: [2d, poster, club]
-  date: '29.03.24'
-  hero: /portfolio/SMFMMarch24/Checkerboard texture white.webp
-  description: '2D work for radio fundraiser for London Radio Station SMFM'
 
 - title: Suzio Vol.7 @ Colour Factory London
   tags: [3d, poster, video, club]
@@ -304,7 +299,7 @@
 
 - title: SMFM @ Ron's Peckham
   tags: [2d, poster]
-  date: '15.03.23'
+  date: '15.03.25'
   hero: /portfolio/SMFMMarch25/A3_6.webp
   description: '2D design work for a day of live radio by London based station Sister Midnight FM in Peckham.'
 
