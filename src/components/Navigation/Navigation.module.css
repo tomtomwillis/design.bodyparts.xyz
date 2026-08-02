@@ -27,8 +27,26 @@
   font-size: 1.2rem;
 }
 
+/* Shrink-wrapped (align-self) so the row is only as wide as the text + arrow —
+   otherwise the column flex stretches it and the hover target runs the full width. */
 .navItemBodyParts {
   margin-top: 0.4rem;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.1em;
+  transition: opacity 0.3s ease;
+}
+
+/* Icon is size="1em", so its scale is set here in em and tracks --nav-font-size. */
+.externalArrow {
+  font-size: 0.5em;
+  transform: translateY(-0.1em);
+  transition: transform 0.2s ease;
+}
+
+.navItemBodyParts:hover .externalArrow {
+  transform: translate(0.1em, -0.25em);
 }
 
 /* Grid-track reveal instead of animating max-height: no arbitrary height
@@ -105,16 +123,25 @@
   margin-bottom: 0.5rem;
 }
 
+/* Inline links inside the bio — inherit the paragraph's type, marked only by
+   the underline so the sentence still reads as one block of copy. */
+.bioLink {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+.bioLink:hover {
+  color: var(--color-primary);
+}
+
 .aboutLinks {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
   padding-left: 0.25rem;
-}
-
-.navItemBodyParts {
-  transition: opacity 0.3s ease;
 }
 
 .navGroupHidden {

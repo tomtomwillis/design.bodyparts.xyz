@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
 import styles from './Navigation.module.css'
 
 export default function Navigation({ portfolioOpen: portfolioOpenProp, onPortfolioToggle }) {
@@ -35,7 +36,16 @@ export default function Navigation({ portfolioOpen: portfolioOpenProp, onPortfol
         <div className={`${styles.aboutMenu} ${aboutOpen ? styles.aboutMenuOpen : ''}`}>
           <div className={styles.aboutMenuInner}>
             <p className={styles.aboutBio}>
-              A design alias of SE London artist and clubber Body Parts. He creates works in 3D, 2D and cyberspace. He also runs an irregular Glasgow/London club night and is a founder of YabbyVille.
+              A design alias of SE London artist and clubber{' '}
+              <a href="https://www.instagram.com/bodyparts.gla/" target="_blank" rel="noopener noreferrer" className={styles.bioLink}>Body Parts</a>.
+              He creates works in{' '}
+              <Link to="/portfolio/3d" className={styles.bioLink}>3D</Link>,{' '}
+              <Link to="/portfolio/2d" className={styles.bioLink}>2D</Link> and{' '}
+              <Link to="/portfolio/web" className={styles.bioLink}>cyberspace</Link>.
+              He also runs irregular Glasgow/London club night{' '}
+              <a href="https://www.instagram.com/bodyparts.gla/" target="_blank" rel="noopener noreferrer" className={styles.bioLink}>Body Parts</a>{' '}
+              and is a founder of{' '}
+              <a href="https://github.com/tomtomwillis/Yabby" target="_blank" rel="noopener noreferrer" className={styles.bioLink}>YabbyVille</a>.
             </p>
             <ul className={styles.aboutLinks}>
               <li>
@@ -80,12 +90,13 @@ export default function Navigation({ portfolioOpen: portfolioOpenProp, onPortfol
       </div>
 
       <a
-        href="https://bodyparts.xyz/"
+        href="https://www.instagram.com/bodyparts.gla/"
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.navItem} ${styles.navItemBodyParts} ${hideOthers ? styles.navGroupHidden : ''}`}
       >
         Body Parts
+        <ArrowUpRight className={styles.externalArrow} size="1em" strokeWidth={2.5} aria-hidden="true" />
       </a>
     </nav>
   )

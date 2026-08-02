@@ -9,6 +9,36 @@
     - /portfolio/SuzioMay26/A3 - unedited Medium.webp
   description: 'Poster and video for Suzio, a club night in London founded by Manuka Honey. The video and poster were made in Blender.'
 
+- title: SMFM Radio Website
+  tags: [2d, web]
+  date: '01.05.26'
+  hero: /portfolio/SMFMMay26/IMG_2720.webp
+  gallery:
+    - /portfolio/SMFMMay26/IMG_2715.webp
+    - /portfolio/SMFMMay26/IMG_2716.webp
+    - /portfolio/SMFMMay26/IMG_2718.webp
+    - /portfolio/SMFMMay26/IMG_2720.webp
+  description: 'Redesign of the front and back ends of the Sister Midnight FM radio website. Back end build using Strapi and front end built in React.'
+  links:
+    - label: Website
+      url: https://radio.sistermidnight.org/
+    - label: GitHub
+      url: https://github.com/SisterMidnightFM/SMFM_React_FrontEnd
+
+- title: Body Bits Website
+  tags: [2d, web, 3d]
+  date: '02.08.26'
+  hero: /portfolio/BodyBitsAug26/IMG_2703.webp
+  gallery:
+    - /portfolio/BodyBitsAug26/IMG_2703.webp
+    - /portfolio/BodyBitsAug26/IMG_2706.webp
+    - /portfolio/BodyBitsAug26/IMG_2708.webp
+    - /portfolio/BodyBitsAug26/IMG_2710.webp
+  description: 'This website :)'
+  links:
+    - label: GitHub
+      url: https://github.com/tomtomwillis/design.bodyparts.xyz
+
 - title: Trough 05 @ Avalon Cafe London
   tags: [poster, 3d, club]
   date: '11.03.26'
